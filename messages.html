@@ -4,18 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Messages</title>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
+
 <body class="flex justify-center bg-gray-100">
 
-  <div class="w-full max-w-sm p-4 pb-20">
-    <h1 class="text-2xl font-bold mb-2">Messages</h1>
-    <div class="w-full h-52 bg-gray-300 rounded-2xl mb-4 flex items-center justify-center">
-      <p class="text-gray-500">No messages yet</p>
+  <div class="w-full max-w-sm p-4 pb-24">
+    <div class="flex justify-between items-center mb-4">
+      <h1 class="text-2xl font-bold">MESSAGES</h1>
+      <i data-lucide="user-circle" class="w-10 h-10 text-gray-700"></i>
     </div>
+
+    <div class="bg-gray-300 p-4 rounded-3xl" id="messagesContainer"></div>
   </div>
 
+  <!-- BOTTOM NAV -->
   <nav class="w-full fixed bottom-0 bg-white shadow flex justify-around py-3">
     <a href="home.html"><i data-lucide="home" class="w-7 h-7 text-gray-400"></i></a>
     <a href="messages.html"><i data-lucide="message-square" class="w-7 h-7 text-blue-600"></i></a>
@@ -24,7 +29,42 @@
   </nav>
 
   <script>
+    const messages = [
+      { id: 1, text: "Shift reminder: You start at 9AM tomorrow." },
+      { id: 2, text: "Weather alert for your region." },
+      { id: 3, text: "New task assigned to your schedule." },
+      { id: 4, text: "Supervisor message: please confirm update." },
+      { id: 5, text: "System: Your information has been updated." }
+    ];
+
+    const container = document.getElementById("messagesContainer");
+
+    const readMessages = JSON.parse(localStorage.getItem("readMessages") || "[]");
+
+    messages.forEach((msg) => {
+      const isUnread = !readMessages.includes(msg.id);
+
+      const item = document.createElement("a");
+      item.href = `chat.html?id=${msg.id}`;
+      item.className =
+        "bg-white p-3 rounded-2xl flex items-center justify-between mb-4 shadow border " +
+        (isUnread ? "border-blue-600" : "border-gray-200");
+
+      item.innerHTML = `
+        <div class="flex items-center gap-3">
+          <i data-lucide="user" class="w-8 h-8 text-black"></i>
+          <p class="leading-tight ${isUnread ? "font-bold text-black" : "font-medium text-gray-700"}">
+            ${msg.text}
+          </p>
+        </div>
+        ${isUnread ? '<div class="w-3 h-3 bg-blue-600 rounded-full"></div>' : ""}
+      `;
+
+      container.appendChild(item);
+    });
+
     lucide.createIcons();
   </script>
+
 </body>
 </html>
