@@ -19,8 +19,8 @@
 
     <h1 class="text-2xl font-bold mb-4">CHAT</h1>
 
-    <div id="chatWindow" class="bg-white p-4 rounded-2xl shadow min-h-[350px] mb-4 flex flex-col gap-3 overflow-y-auto">
-      <!-- Messages will load here -->
+    <div id="chatWindow"
+      class="bg-white p-4 rounded-2xl shadow min-h-[350px] mb-4 flex flex-col gap-3 overflow-y-auto">
     </div>
 
     <div class="bg-white p-3 rounded-2xl shadow flex items-center gap-2">
@@ -44,47 +44,34 @@
     <a href="settings.html"><i data-lucide="settings" class="w-7 h-7 text-gray-400"></i></a>
   </nav>
 
+
   <script>
+    // Same IDs and threads as messages.html
+    const chatThreads = {
+      1: [{ sender: "them", text: "Shift reminder: You start at 9AM tomorrow." }],
+      2: [{ sender: "them", text: "Weather alert: heavy rain expected." }],
+      3: [{ sender: "them", text: "You have a new task assigned." }],
+      4: [{ sender: "them", text: "Please confirm the recent update." }],
+      5: [{ sender: "them", text: "Your information has been updated." }]
+    };
+
     const params = new URLSearchParams(window.location.search);
     const id = params.get("id");
 
-    const messages = {
-      1: [
-        { sender: "them", text: "Shift reminder: You start at 9AM tomorrow." }
-      ],
-      2: [
-        { sender: "them", text: "Weather alert: heavy rain expected." }
-      ],
-      3: [
-        { sender: "them", text: "You have a new task assigned." }
-      ],
-      4: [
-        { sender: "them", text: "Please confirm the recent update." }
-      ],
-      5: [
-        { sender: "them", text: "Your information has been updated." }
-      ]
-    };
-
-    // Mark as read
-    const read = JSON.parse(localStorage.getItem("readMessages") || "[]");
-    if (!read.includes(Number(id))) {
-      read.push(Number(id));
-      localStorage.setItem("readMessages", JSON.stringify(read));
-    }
+    // Safety — fallback to message 1 if ID missing
+    const thread = chatThreads[id] || chatThreads[1];
 
     const chatWin = document.getElementById("chatWindow");
 
     function renderChat() {
       chatWin.innerHTML = "";
-      messages[id].forEach((msg) => {
+      thread.forEach(msg => {
         const bubble = document.createElement("div");
         bubble.className =
           "max-w-[75%] px-3 py-2 rounded-xl text-sm shadow " +
           (msg.sender === "me"
             ? "self-end bg-blue-700 text-white"
             : "self-start bg-gray-200 text-black");
-
         bubble.innerText = msg.text;
         chatWin.appendChild(bubble);
       });
@@ -95,16 +82,14 @@
       const text = input.value.trim();
       if (!text) return;
 
-      messages[id].push({ sender: "me", text });
+      thread.push({ sender: "me", text });
       input.value = "";
       renderChat();
-
       chatWin.scrollTop = chatWin.scrollHeight;
     }
 
     renderChat();
     lucide.createIcons();
   </script>
-
 </body>
 </html>
