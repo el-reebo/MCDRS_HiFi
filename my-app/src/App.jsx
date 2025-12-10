@@ -22,7 +22,7 @@ function App() {
   return (
     <Router>
       <HeaderBar isLoggedIn={isLoggedIn} />
-      <Nav_user />
+      <Nav_admin />
       <Routes>
         <Route path="/" element={<Home_user />} />
         {/* onLogon set so if called will always set IsLoggedIn true */}
