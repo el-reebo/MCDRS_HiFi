@@ -7,6 +7,7 @@ function HeaderBar({ isLoggedIn }) {
   const pageTitles = {
     "/": "Dashboard",
     "/home-user": "Dashboard",
+    "/home-admin": "Home_admin",
     "/notifs": "Notification",
     "/network": "Manage Network",
     "/settings": "Settings",

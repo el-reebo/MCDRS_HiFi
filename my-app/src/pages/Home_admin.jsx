@@ -1,27 +1,38 @@
 function Home_admin() {
   return (
     <>
-      <div className="w-full max-w-sm p-4 pb-20">
-        <h1 className="text-2xl font-bold mb-2">Dashboard</h1>
+      <div class="flex justify-center bg-gray-100">
 
-        <div className="w-full h-52 bg-gray-300 rounded-2xl mb-4"></div>
+ 
 
-        <div className="bg-blue-700 text-white rounded-xl p-3 mb-4">
-          <p className="font-semibold">Task Allocation</p>
-          <div className="bg-white text-black rounded-xl p-3 mt-2 flex items-center gap-3">
-            <i data-lucide="alert-circle" className="text-yellow-500"></i>
-            Task assigned
-          </div>
-        </div>
-
-        <div className="bg-blue-700 text-white rounded-xl p-3">
-          <p className="font-semibold">Weather Reports</p>
-          <div className="bg-white text-black rounded-xl p-3 mt-2 flex items-center gap-3">
-            <i data-lucide="alert-circle" className="text-red-500"></i>
-            WEATHER WARNING
-          </div>
-        </div>
+    <div class="bg-blue-700 text-white rounded-xl p-3 mb-4">
+      <p class="font-semibold">Task Allocation</p>
+      <div class="bg-white text-black rounded-xl p-3 mt-2 flex items-center gap-3">
+        <i data-lucide="alert-circle" class="text-yellow-500"></i>
+        Task assigned
       </div>
+    </div>
+
+    <div class="bg-blue-700 text-white rounded-xl p-3">
+      <p class="font-semibold">Weather Reports</p>
+      <div class="bg-white text-black rounded-xl p-3 mt-2 flex items-center gap-3">
+        <i data-lucide="alert-circle" class="text-red-500"></i>
+        WEATHER WARNING
+      </div>
+    </div>
+  </div>
+
+  <nav class="w-full fixed bottom-0 bg-white shadow flex justify-around py-3">
+    <a href="home.html"><i data-lucide="home" class="w-7 h-7 text-blue-600"></i></a>
+    <a href="messages.html"><i data-lucide="message-square" class="w-7 h-7 text-gray-400"></i></a>
+    <a href="alerts.html"><i data-lucide="alert-circle" class="w-7 h-7 text-gray-400"></i></a>
+    <a href="settings.html"><i data-lucide="settings" class="w-7 h-7 text-gray-400"></i></a>
+  </nav>
+
+  <script>
+    lucide.createIcons();
+  </script>
+
     </>
   );
 }
