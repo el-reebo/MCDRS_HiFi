@@ -18,17 +18,24 @@ import Settings from "./pages/Settings";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   return (
     <Router>
-      <HeaderBar isLoggedIn={isLoggedIn} />
-      <Nav_admin />
+      <HeaderBar isLoggedIn={isLoggedIn} isAdmin={isAdmin} />
+      {isAdmin ? <Nav_admin /> : <Nav_user />}
       <Routes>
         <Route path="/" element={<Home_user />} />
         {/* onLogon set so if called will always set IsLoggedIn true */}
         <Route
           path="/login"
-          element={!isLoggedIn && <Login onLogin={() => setIsLoggedIn(true)} />}
+          element={
+            <Login
+              onLogin={() => setIsLoggedIn(true)}
+              isAdmin={setIsAdmin}
+              isLoggedIn={isLoggedIn}
+            />
+          }
         />
 
         <Route path="/home-admin" element={<Home_admin />} />

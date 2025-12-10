@@ -24,7 +24,6 @@ function Map() {
               <Dashboard_warning
                 onClick={() => setTransform(-373, -756, 1.89)}
                 // 1.89, -403, -766
-                className="transition-all"
               />
               {/*scale, X(px), Y(px)*/}
               <TransformComponent className="w-full h-full z-0">

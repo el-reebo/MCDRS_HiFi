@@ -2,7 +2,7 @@ import { useState, Link } from "react";
 import { useNavigate } from "react-router-dom";
 import { X } from "lucide-react";
 
-function Login({ onLogin }) {
+function Login({ onLogin, isAdmin, isLoggedIn }) {
   // variables stored across re-renders
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState("");
@@ -16,6 +16,9 @@ function Login({ onLogin }) {
   // Demo credentials
   const demoEmail = "test@test.com";
   const demoPassword = "1234";
+  // Demo Admin credentials
+  const adminEmail = "admin@test.com";
+  const adminPassword = "1234";
 
   const handleSubmit = (e) => {
     e.preventDefault(); //Prevent page regresh
@@ -27,7 +30,15 @@ function Login({ onLogin }) {
         setTimeout(() => {
           navigate("/home-user");
           onLogin(); //set isLoggedIn = true in app.jsx
+          isAdmin(false);
         }, 2000);
+      } else if (email === adminEmail && password === adminPassword) {
+        setSuccessMsg("Login successful!");
+        setTimeout(() => {
+          navigate("/home-admin");
+          onLogin();
+          isAdmin(true); //set isAdmin  = true in app.jsx
+        });
       } else {
         setMessage("Invalid Credentials");
       }
@@ -52,7 +63,13 @@ function Login({ onLogin }) {
       <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
         <div className="bg-white shadow-md rounded p-6 w-80">
           <h1 className="text-2xl font-bold mb-4">
-            {isLogin ? "Login" : "Create Account"}
+            {/* 'isLogin': "is login page?" used to toggle between login page and create account */}
+            {/* 'isLoggedIn': "is a user currently logged in" used to change msg if user already logged in */}
+            {!isLogin
+              ? "Create Account"
+              : isLoggedIn
+              ? "Switch Accounts?"
+              : "Login"}
           </h1>
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-3">
@@ -85,6 +102,10 @@ function Login({ onLogin }) {
             <button
               type="submit"
               className="bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+              onClick={() => {
+                setMessage("");
+                setSuccessMsg("");
+              }}
             >
               {isLogin ? "Login" : "Sign Up"}
             </button>
