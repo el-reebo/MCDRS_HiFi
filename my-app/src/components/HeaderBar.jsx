@@ -1,7 +1,7 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { CircleUser, ArrowLeft } from "lucide-react";
 
-function HeaderBar() {
+function HeaderBar({ isLoggedIn }) {
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -38,7 +38,7 @@ function HeaderBar() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 w-full h-15 bg-white divide-y divide-gray-200 flex justify-between items-center text-black py-4 px-7 z-50">
+      <header className="fixed top-0 left-0 w-full h-15 bg-white flex divide-y divide-gray-200 justify-between items-center text-black py-4 px-7 z-50">
         <div className="flex items-center gap-3">
           {isChatThread && (
             <button 
@@ -48,9 +48,19 @@ function HeaderBar() {
               <ArrowLeft className="w-6 h-6" />
             </button>
           )}
-          <h1 className="text-2xl font-bold">{title}</h1>
+          <h1 className="flex items-center gap-3 text-2xl font-bold mb-2">{title}</h1>
         </div>
-        <CircleUser className="w-10 h-10" />
+  
+        <Link to="/login">
+          {isLoggedIn ? (
+            <CircleUser className="w-10 h-10 text-blue-600" />
+          ) : (
+            <div className="flex">
+              <span className="my-auto mr-2 text-black">Log In</span>
+              <CircleUser className="w-10 h-10 text-black" />
+            </div>
+          )}
+        </Link>
       </header>
     </>
   );

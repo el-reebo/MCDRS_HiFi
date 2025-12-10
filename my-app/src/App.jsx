@@ -5,6 +5,7 @@ import "./App.css";
 // --- User Pages ---
 import HeaderBar from "./components/HeaderBar";
 import Nav_user from "./components/Nav_user";
+import Login from "./pages/Login";
 import Home_user from "./pages/Home_user";
 import Notifs from "./pages/Notifs";
 import Network from "./pages/Network";
@@ -19,14 +20,19 @@ import ChatThread from "./pages/ChatThread";
 
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <Router>
-      <HeaderBar />
-      <Nav_admin/>
+      <HeaderBar isLoggedIn={isLoggedIn} />
+      <Nav_admin />
       <Routes>
         <Route path="/" element={<Home_user />} />
+        {/* onLogon set so if called will always set IsLoggedIn true */}
+        <Route
+          path="/login"
+          element={!isLoggedIn && <Login onLogin={() => setIsLoggedIn(true)} />}
+        />
 
         <Route path="/home-admin" element={<Home_admin />} />
         <Route path="/alerts" element={<Alerts />} />

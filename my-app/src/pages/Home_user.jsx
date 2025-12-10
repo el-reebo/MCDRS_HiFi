@@ -1,6 +1,7 @@
 import HeaderBar from "../components/HeaderBar";
 import map from "../assets/images/GTAV-HD-MAP-roadmap.jpg";
 import Map from "../components/Map";
+import Dashboard_warning from "../components/Dashboard_warning";
 import { useState } from "react";
 
 function Home_user() {
@@ -8,26 +9,8 @@ function Home_user() {
 
   return (
     <>
-      <div className="relative w-full z-0">
-        {/* <h1 className="text-2xl font-bold mb-2">Dashboard</h1> */}
-        {/* Map container */}
-        {/* <Map /> */}
-
-        {/* Zoom controls */}
-        {/* <div className="absolute top-4 right-4 flex gap-2">
-          <button
-            onClick={() => setScale(scale + 2)}
-            className="bg-white px-2 py-1 rounded shadow"
-          >
-            +
-          </button>
-          <button
-            onClick={() => setScale(Math.max(1, scale - 2))}
-            className="bg-white px-2 py-1 rounded shadow"
-          >
-            -
-          </button>
-        </div> */}
+      <div className="w-screen h-[calc(100vh-4.7rem-54px) overflow-hidden">
+        <Map className="z-0" />
       </div>
     </>
   );
