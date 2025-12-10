@@ -21,7 +21,7 @@ function App() {
   return (
     <Router>
       <HeaderBar />
-      <Nav_user />
+      <Nav_admin/>
       <Routes>
         <Route path="/" element={<Home_user />} />
 
