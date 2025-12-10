@@ -1,7 +1,7 @@
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { CircleUser } from "lucide-react";
 
-function HeaderBar() {
+function HeaderBar({ isLoggedIn }) {
   const location = useLocation();
 
   const pageTitles = {
@@ -17,9 +17,18 @@ function HeaderBar() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 w-full h-15 bg-white divide-y divide-gray-200 flex justify-between text-black py-4 px-7">
+      <header className="fixed top-0 left-0 w-full h-15 bg-white flex justify-between text-black py-4 px-7">
         <h1 className="text-2xl font-bold mb-2">{title}</h1>
-        <CircleUser className="w-10 h-10" />
+        <Link to="/login">
+          {isLoggedIn ? (
+            <CircleUser className="w-10 h-10 text-blue-600" />
+          ) : (
+            <div className="flex">
+              <span className="my-auto mr-2 text-black">Log In</span>
+              <CircleUser className="w-10 h-10 text-black" />
+            </div>
+          )}
+        </Link>
       </header>
     </>
   );
