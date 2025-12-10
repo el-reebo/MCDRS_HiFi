@@ -14,6 +14,9 @@ import Home_admin from "./pages/Home_admin";
 import Messages from "./pages/Messages";
 import Alerts from "./pages/Alerts";
 import Settings from "./pages/Settings";
+import Chat from "./pages/Chat";
+import ChatThread from "./pages/ChatThread";
+
 
 function App() {
   const [count, setCount] = useState(0);
@@ -29,6 +32,8 @@ function App() {
         <Route path="/alerts" element={<Alerts />} />
         <Route path="/messages" element={<Messages />} />
         <Route path="/settings" element={<Settings />} />
+        <Route path="/chat" element={<Chat />} />
+        <Route path="/chat/:id" element={<ChatThread />} />
 
         <Route path="/home-user" element={<Home_user />} />
         <Route path="/notifs" element={<Notifs />} />
