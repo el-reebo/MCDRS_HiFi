@@ -1,8 +1,9 @@
-import { Link, useLocation } from "react-router-dom";
-import { CircleUser } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { CircleUser, ArrowLeft } from "lucide-react";
 
 function HeaderBar({ isLoggedIn, isAdmin }) {
   const location = useLocation();
+  const navigate = useNavigate();
 
   const pageTitles = {
     "/": "Dashboard",
@@ -11,15 +12,47 @@ function HeaderBar({ isLoggedIn, isAdmin }) {
     "/notifs": "Notification",
     "/network": "Manage Network",
     "/settings": "Settings",
+    "/messages": "Messages",
+    "/alerts": "Alerts",
   };
 
-  //variable needs to be const as we're running in safe mode
-  const title = pageTitles[location.pathname];
+  // Check if we're on a chat thread page
+  const isChatThread = location.pathname.startsWith("/chat/");
+
+  // Get the title from location state if it's a chat thread, otherwise use pageTitles
+  const title = isChatThread
+    ? location.state?.title || "Chat"
+    : pageTitles[location.pathname];
+
+  const handleBackClick = () => {
+    // Navigate back to messages with state to mark message as read
+    if (isChatThread && location.state?.messageId) {
+      navigate("/messages", {
+        state: { markAsRead: location.state.messageId },
+        replace: false,
+      });
+    } else {
+      navigate(-1);
+    }
+  };
 
   return (
     <>
-      <header className="fixed top-0 left-0 w-full bg-white flex justify-between text-black py-4 px-7">
-        <h1 className="text-2xl font-bold mb-2">{title}</h1>
+      <header className="fixed top-0 left-0 w-full h-15 bg-white flex divide-y divide-gray-200 justify-between items-center text-black py-4 px-7 z-50">
+        <div className="flex items-center gap-3">
+          {isChatThread && (
+            <button
+              onClick={handleBackClick}
+              className="text-blue-500 hover:text-blue-700 transition"
+            >
+              <ArrowLeft className="w-6 h-6" />
+            </button>
+          )}
+          <h1 className="flex items-center gap-3 text-2xl font-bold mb-2">
+            {title}
+          </h1>
+        </div>
+
         <Link
           to={
             location.pathname === "/login"
