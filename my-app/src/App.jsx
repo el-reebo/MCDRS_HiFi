@@ -22,6 +22,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [username, setUsername] = useState("");
+  const [msgDot, setMsgDot] = useState(0);
 
   return (
     <Router>
@@ -30,7 +31,7 @@ function App() {
         isAdmin={isAdmin}
         username={username}
       />
-      {isAdmin ? <Nav_admin /> : <Nav_user />}
+      {isAdmin ? <Nav_admin unreadCount={msgDot} /> : <Nav_user />}
       <Routes>
         <Route path="/" element={<Home_user />} />
         {/* onLogon set so if called will always set IsLoggedIn true */}
@@ -48,7 +49,7 @@ function App() {
 
         <Route path="/home-admin" element={<Home_admin />} />
         <Route path="/alerts" element={<Alerts />} />
-        <Route path="/messages" element={<Messages />} />
+        <Route path="/messages" element={<Messages setMsgDot={setMsgDot} />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/chat" element={<Chat />} />
         <Route path="/chat/:id" element={<ChatThread />} />

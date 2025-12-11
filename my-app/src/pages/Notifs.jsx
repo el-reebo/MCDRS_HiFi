@@ -1,6 +1,9 @@
 import { TriangleAlert, Info } from "lucide-react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Notifs() {
+  const [notifToggle, setNotifToggle] = useState(false);
   const notifications = [
     {
       id: 1,
@@ -54,6 +57,11 @@ function Notifs() {
           </li>
         ))}
       </ul>
+      <Link
+        to="/home-user"
+        state={{ triggerTab: true }}
+        className="fixed top-[7.5rem] w-[396px] h-[100px] bg-transparent focus: outline-0 hover: border-transparent"
+      ></Link>
       <h2 className="sticky font-bold text-lg items-center p-2">Yesterday</h2>
       <ul className="w-full max-w-md bg-white rounded-lg shadow-md divide-y divide-gray-200">
         {yesterday_notifs.map((notif) => (

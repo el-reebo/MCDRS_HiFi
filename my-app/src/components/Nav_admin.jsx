@@ -2,7 +2,7 @@
 import { Home, MessageSquare, AlertCircle, Settings } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
-function Nav_admin() {
+function Nav_admin({ unreadCount }) {
   const location = useLocation(); //stores current path e.g. /alerts
 
   return (
@@ -26,6 +26,11 @@ function Nav_admin() {
                 : "text-gray-400"
             }`}
           />
+          {unreadCount > 0 && (
+            <span className="absolute top-2 left-[39%] bg-blue-600 text-white text-xs px-1.5 py-0.5 rounded-full font-bold">
+              {unreadCount}
+            </span>
+          )}
         </Link>
 
         <Link to="/alerts">

@@ -4,7 +4,7 @@ import Dashboard_warning from "./Dashboard_warning";
 import { Send, AlertCircle } from "lucide-react";
 import warningicon from "../assets/images/warning_icon.webp";
 
-function Map() {
+function Map({ triggerTab }) {
   return (
     <>
       <div className="w-full h-full">
@@ -25,6 +25,7 @@ function Map() {
               <Dashboard_warning
                 onClick={() => setTransform(-373, -756, 1.89)}
                 // 1.89, -403, -766
+                triggerTab={triggerTab}
               />
               {/*scale, X(px), Y(px)*/}
               <TransformComponent className="w-full h-full z-0">

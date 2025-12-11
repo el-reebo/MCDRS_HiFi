@@ -1,10 +1,19 @@
 import { GripHorizontal, CircleAlert, Circle, Info, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import tornadoSign from "../assets/images/tornadoSign.png";
 
-function Dashboard_warning({ onClick }) {
+function Dashboard_warning({ onClick, triggerTab }) {
   const [showInfo, setShowInfo] = useState(false);
+  const [tabTriggered, setTabTriggered] = useState(triggerTab);
   const tabH = 17;
+
+  useEffect(() => {
+    if (tabTriggered) {
+      onClick();
+      setShowInfo(true);
+      setTabTriggered(false);
+    }
+  }, [triggerTab]);
 
   return (
     <>

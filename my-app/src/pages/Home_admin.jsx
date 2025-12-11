@@ -1,6 +1,10 @@
 import { Home, MessageSquare, AlertCircle, Settings } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import map from "../assets/images/GTAV-HD-MAP-roadmap-croppedv2.webp";
+import AdminMap from "../components/AdminMap";
+import TaskSymbol from "../assets/images/Task_symbol.png";
+import TornadoIcon from "../assets/images/tornadoSign.png";
 
 export default function Home_admin() {
   // Same messages state as in Messages.jsx to get unread count
@@ -20,50 +24,55 @@ export default function Home_admin() {
       <div className="w-full max-w-md p-4">
         {/* Map with Alert Overlay */}
         <div className="relative mb-4">
-          <img
-            src={"../assets/images/GTAV-HD-MAP-roadmap.jpg"}
-            alt="City Map"
-            className="w-full rounded-2xl"
-          />
+          {/* <img src={map} alt="City Map" className="w-full rounded-2xl" /> */}
+          <AdminMap className="w-full  rounded-2xl" />
           {/* Heat map overlay effect */}
-          <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-red-500 opacity-60 rounded-full blur-3xl"></div>
+          {/* <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-red-500 opacity-60 rounded-full blur-3xl"></div>
           <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-orange-500 opacity-70 rounded-full blur-2xl"></div>
-          <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-yellow-400 opacity-80 rounded-full blur-xl"></div>
-          
+          <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-yellow-400 opacity-80 rounded-full blur-xl"></div> */}
+
           {/* Alert Icon */}
-          <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-red-600 text-white rounded-full w-12 h-12 flex items-center justify-center text-2xl font-bold">
+          {/* <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-red-600 text-white rounded-full w-12 h-12 flex items-center justify-center text-2xl font-bold">
             !
-          </div>
+          </div> */}
         </div>
 
         {/* Task Allocation Card */}
         <div className="bg-blue-600 rounded-2xl p-4 mb-4">
           <h2 className="text-white font-bold text-lg mb-3">Task Allocation</h2>
           <div className="bg-white rounded-xl p-4 flex items-center gap-3">
-            <div className="bg-yellow-400 rounded-full w-12 h-12 flex items-center justify-center">
-              <span className="text-white text-2xl font-bold">⚠</span>
-            </div>
-            <p className="font-semibold text-gray-800">Task assigned</p>
+            <button className="flex w-full p-0 bg-transparent focus: outline-0 hover: border transparent">
+              {/* <div className="bg-yellow-400 rounded-full w-12 h-12 flex items-center justify-center">
+                <span className="text-white text-2xl font-bold mr-[2px]">
+                  ⚠
+                </span>
+              </div> */}
+              <img src={TaskSymbol} alt="Task" className="w-10 h-10 mr-2" />
+              <p className="font-semibold text-gray-800 my-auto">
+                Task assigned
+              </p>
+            </button>
           </div>
         </div>
 
         {/* Weather Reports Card */}
         <div className="bg-blue-600 rounded-2xl p-4">
           <h2 className="text-white font-bold text-lg mb-3">Weather Reports</h2>
-          <div className="bg-white rounded-xl p-4 flex items-center gap-3">
-            <div className="bg-red-600 rounded-full w-12 h-12 flex items-center justify-center">
-              <span className="text-white text-2xl font-bold">▲</span>
+          <div className="bg-red-500 rounded-xl px-4 py-2 flex justify-between items-center gap-3 text-white">
+            <img src={TornadoIcon} alt="Tornado Icon" className="w-10 h-10" />
+            <div className="flex">
+              <p className="font-bold  text-lg mx-auto">Tornado Warning</p>
             </div>
-            <div className="flex-1">
-              <p className="font-bold text-gray-800">WEATHER WARNING</p>
+            <div className=" text-white font-medium py-auto">
+              <p>10 km</p>
+              <p>13:28</p>
             </div>
-            <div className="text-4xl text-gray-400">🌪️</div>
           </div>
         </div>
       </div>
 
       {/* Bottom Navigation */}
-      <nav className="w-full fixed bottom-0 bg-white shadow flex justify-around py-3">
+      {/* <nav className="w-full fixed bottom-0 bg-white shadow flex justify-around py-3">
         <Link to="/home-admin">
           <Home className="w-8 h-8 text-blue-600" />
         </Link>
@@ -84,7 +93,7 @@ export default function Home_admin() {
         <Link to="/settings">
           <Settings className="w-8 h-8 text-gray-400" />
         </Link>
-      </nav>
+      </nav> */}
     </div>
   );
 }
