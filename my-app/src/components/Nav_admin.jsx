@@ -7,7 +7,7 @@ function Nav_admin({ unreadCount }) {
 
   return (
     <>
-      <nav className="fixed bottom-0 left-0 w-full bg-white shadow py-3 flex justify-around">
+      <nav className="fixed bottom-0 left-0 w-full bg-white border-t-2 border-gray-200 shadow py-3 flex justify-around">
         <Link to="/home-admin">
           <Home
             className={`w-7 h-7 ${

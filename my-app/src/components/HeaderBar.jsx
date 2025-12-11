@@ -14,6 +14,7 @@ function HeaderBar({ isLoggedIn, isAdmin, username }) {
     "/settings": "Settings",
     "/messages": "Messages",
     "/alerts": "Alerts",
+    "/alert-map": "Alerts",
   };
 
   // Check if we're on a chat thread page

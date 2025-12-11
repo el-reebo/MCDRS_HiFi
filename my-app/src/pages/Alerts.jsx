@@ -67,6 +67,10 @@ function Alerts() {
 
         {/* Alerts Container */}
         <div className="bg-gray-300 rounded-3xl p-6 space-y-4">
+          <Link
+            to="/alert-map"
+            className="fixed top-[12rem] left-10 w-[348px] h-[100px] bg-transparent focus: outline-0 hover: border-transparent"
+          />
           {alerts.map((alert) => (
             <div
               key={alert.id}

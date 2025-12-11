@@ -21,6 +21,7 @@ import ChatThread from "./pages/ChatThread";
 import Account from "./pages/Account";
 import Privacy from "./pages/Privacy";
 import AccountVerified from "./pages/AccountVerified";
+import AlertMap from "./pages/AlertMap";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -61,11 +62,11 @@ function App() {
         <Route path="/verified" element={<AccountVerified />} />
         <Route path="/chat" element={<Chat />} />
         <Route path="/chat/:id" element={<ChatThread />} />
+        <Route path="/alert-map" element={<AlertMap />} />
 
         <Route path="/home-user" element={<Home_user />} />
         <Route path="/notifs" element={<Notifs />} />
         <Route path="/network" element={<Network />} />
-
       </Routes>
     </Router>
   );
