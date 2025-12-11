@@ -1,5 +1,16 @@
 import { useState } from "react";
-import { Home, MessageSquare, AlertCircle, Settings as SettingsIcon, User, Lock, Accessibility, UserCheck, MapPin, Info } from "lucide-react";
+import {
+  Home,
+  MessageSquare,
+  AlertCircle,
+  Settings as SettingsIcon,
+  User,
+  Lock,
+  Accessibility,
+  UserCheck,
+  MapPin,
+  Info,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function Settings() {
@@ -16,7 +27,6 @@ export default function Settings() {
 
         {/* Settings Container */}
         <div className="bg-gray-300 rounded-3xl p-6 space-y-4">
-          
           {/* Account */}
           <button className="w-full bg-white rounded-full py-4 px-6 flex items-center gap-4 shadow hover:bg-gray-50 transition">
             <User className="w-6 h-6" />
@@ -42,10 +52,12 @@ export default function Settings() {
           </button>
 
           {/* Location Toggle */}
-          <button 
+          <button
             onClick={toggleLocation}
             className={`w-full rounded-full py-4 px-6 flex items-center gap-4 shadow transition ${
-              locationEnabled ? "bg-green-500 text-white" : "bg-white text-black"
+              locationEnabled
+                ? "bg-green-500 text-white"
+                : "bg-white text-black"
             }`}
           >
             <MapPin className="w-6 h-6" />
@@ -59,12 +71,11 @@ export default function Settings() {
             <Info className="w-6 h-6" />
             <span className="font-semibold text-lg">Information</span>
           </button>
-
         </div>
       </div>
 
       {/* Bottom Navigation */}
-      <nav className="w-full fixed bottom-0 bg-white shadow flex justify-around py-3">
+      {/* <nav className="w-full fixed bottom-0 bg-white shadow flex justify-around py-3">
         <Link to="/home-admin">
           <Home className="w-7 h-7 text-gray-400" />
         </Link>
@@ -83,7 +94,7 @@ export default function Settings() {
         <Link to="/settings">
           <SettingsIcon className="w-7 h-7 text-blue-600" />
         </Link>
-      </nav>
+      </nav> */}
     </div>
   );
 }

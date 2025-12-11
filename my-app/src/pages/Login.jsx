@@ -2,7 +2,7 @@ import { useState, Link } from "react";
 import { useNavigate } from "react-router-dom";
 import { X } from "lucide-react";
 
-function Login({ onLogin, isAdmin, isLoggedIn }) {
+function Login({ onLogin, isAdmin, isLoggedIn, setUsername }) {
   // variables stored across re-renders
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState("");
@@ -16,9 +16,11 @@ function Login({ onLogin, isAdmin, isLoggedIn }) {
   // Demo credentials
   const demoEmail = "test@test.com";
   const demoPassword = "1234";
+  const demoUsername = "test67";
   // Demo Admin credentials
   const adminEmail = "admin@test.com";
   const adminPassword = "1234";
+  const adminUsername = "admin21";
 
   const handleSubmit = (e) => {
     e.preventDefault(); //Prevent page regresh
@@ -31,6 +33,7 @@ function Login({ onLogin, isAdmin, isLoggedIn }) {
           navigate("/home-user");
           onLogin(); //set isLoggedIn = true in app.jsx
           isAdmin(false);
+          setUsername(demoUsername);
         }, 2000);
       } else if (email === adminEmail && password === adminPassword) {
         setSuccessMsg("Login successful!");
@@ -38,6 +41,7 @@ function Login({ onLogin, isAdmin, isLoggedIn }) {
           navigate("/home-admin");
           onLogin();
           isAdmin(true); //set isAdmin  = true in app.jsx
+          setUsername(adminUsername);
         });
       } else {
         setMessage("Invalid Credentials");
@@ -81,6 +85,16 @@ function Login({ onLogin, isAdmin, isLoggedIn }) {
               onChange={(e) => setEmail(e.target.value)}
             />
 
+            {!isLogin && (
+              <input
+                type="text"
+                placeholder="Username"
+                className="border p-2 rounded"
+                // value={username}
+                // onChange={(e) => setUsername(e.target.value)}
+              />
+            )}
+
             <input
               type="password"
               placeholder="Password"
@@ -99,12 +113,26 @@ function Login({ onLogin, isAdmin, isLoggedIn }) {
               />
             )}
 
+            {!isLogin && (
+              <input
+                title="ID"
+                type="file"
+                placeholder="Upload ID"
+                accept="image/png, image/jpeg"
+              />
+            )}
+
             <button
               type="submit"
               className="bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
               onClick={() => {
                 setMessage("");
                 setSuccessMsg("");
+                setTimeout(() => {
+                  setEmail("");
+                  setPassword("");
+                  setPasswordCheck("");
+                }, 2000);
               }}
             >
               {isLogin ? "Login" : "Sign Up"}

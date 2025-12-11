@@ -1,7 +1,7 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { CircleUser, ArrowLeft } from "lucide-react";
 
-function HeaderBar({ isLoggedIn, isAdmin }) {
+function HeaderBar({ isLoggedIn, isAdmin, username }) {
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -63,7 +63,10 @@ function HeaderBar({ isLoggedIn, isAdmin }) {
           }
         >
           {isLoggedIn ? (
-            <CircleUser className="w-10 h-10 text-blue-600" />
+            <div className="flex">
+              <span className="my-auto mr-2 text-blue-600">{username}</span>
+              <CircleUser className="w-10 h-10 text-blue-600" />
+            </div>
           ) : (
             <div className="flex">
               <span className="my-auto mr-2 text-black">Log In</span>

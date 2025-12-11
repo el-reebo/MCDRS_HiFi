@@ -1,7 +1,8 @@
 import map from "../assets/images/GTAV-HD-MAP-roadmap-croppedv2.webp";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import Dashboard_warning from "./Dashboard_warning";
-import { Send } from "lucide-react";
+import { Send, AlertCircle } from "lucide-react";
+import warningicon from "../assets/images/warning_icon.webp";
 
 function Map() {
   return (
@@ -14,7 +15,7 @@ function Map() {
           {/* extracting the setTransform method from transform wrapper */}
           {({ setTransform, ...rest }) => (
             <>
-              <div className="fixed left-[37.5%] top-[5rem] flex z-50">
+              <div className="fixed left-[50%] translate-x-[-50%] top-[5rem] flex z-50">
                 <button className="flex mx-auto bg-yellow-400 max-w-xs rounded-full font-bold text-xl drop-shadow-lg">
                   {" "}
                   <Send className="h-6 w-6 text-black mr-[10px]" />
@@ -27,7 +28,7 @@ function Map() {
               />
               {/*scale, X(px), Y(px)*/}
               <TransformComponent className="w-full h-full z-0">
-                <div className="w-full h-full">
+                <div className="relative w-full h-full">
                   <img
                     src={map}
                     alt="map"

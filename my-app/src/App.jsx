@@ -18,14 +18,18 @@ import Settings from "./pages/Settings";
 import Chat from "./pages/Chat";
 import ChatThread from "./pages/ChatThread";
 
-
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [username, setUsername] = useState("");
 
   return (
     <Router>
-      <HeaderBar isLoggedIn={isLoggedIn} isAdmin={isAdmin} />
+      <HeaderBar
+        isLoggedIn={isLoggedIn}
+        isAdmin={isAdmin}
+        username={username}
+      />
       {isAdmin ? <Nav_admin /> : <Nav_user />}
       <Routes>
         <Route path="/" element={<Home_user />} />
@@ -37,6 +41,7 @@ function App() {
               onLogin={() => setIsLoggedIn(true)}
               isAdmin={setIsAdmin}
               isLoggedIn={isLoggedIn}
+              setUsername={setUsername}
             />
           }
         />
