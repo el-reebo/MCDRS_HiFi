@@ -15,8 +15,12 @@ import Home_admin from "./pages/Home_admin";
 import Messages from "./pages/Messages";
 import Alerts from "./pages/Alerts";
 import Settings from "./pages/Settings";
+import Accessibility from "./pages/Accessibility";
 import Chat from "./pages/Chat";
 import ChatThread from "./pages/ChatThread";
+import Account from "./pages/Account";
+import Privacy from "./pages/Privacy";
+import AccountVerified from "./pages/AccountVerified";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -50,12 +54,17 @@ function App() {
         <Route path="/alerts" element={<Alerts />} />
         <Route path="/messages" element={<Messages />} />
         <Route path="/settings" element={<Settings />} />
+        <Route path="/accessibility" element={<Accessibility />} />
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/account" element={<Account />} />
+        <Route path="/verified" element={<AccountVerified />} />
         <Route path="/chat" element={<Chat />} />
         <Route path="/chat/:id" element={<ChatThread />} />
 
         <Route path="/home-user" element={<Home_user />} />
         <Route path="/notifs" element={<Notifs />} />
         <Route path="/network" element={<Network />} />
+
       </Routes>
     </Router>
   );

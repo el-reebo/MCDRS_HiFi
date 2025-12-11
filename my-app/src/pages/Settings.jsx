@@ -27,30 +27,40 @@ export default function Settings() {
 
         {/* Settings Container */}
         <div className="bg-gray-300 rounded-3xl p-6 space-y-4">
-          {/* Account */}
-          <button className="w-full bg-white rounded-full py-4 px-6 flex items-center gap-4 shadow hover:bg-gray-50 transition">
+          <Link
+            to="/account"
+            className="w-full bg-white rounded-full py-4 px-6 flex items-center gap-4 shadow hover:bg-gray-50 transition text-black"
+          >
             <User className="w-6 h-6" />
             <span className="font-semibold text-lg">Account</span>
-          </button>
+          </Link>
 
           {/* Privacy */}
-          <button className="w-full bg-white rounded-full py-4 px-6 flex items-center gap-4 shadow hover:bg-gray-50 transition">
+          <Link
+            to="/privacy"
+            className="w-full bg-white rounded-full py-4 px-6 flex items-center gap-4 shadow hover:bg-gray-50 transition text-black"
+          >
             <Lock className="w-6 h-6" />
             <span className="font-semibold text-lg">Privacy</span>
-          </button>
+          </Link>
 
-          {/* Accessibility */}
-          <button className="w-full bg-white rounded-full py-4 px-6 flex items-center gap-4 shadow hover:bg-gray-50 transition">
+          {/* Accessibility - Link */}
+          <Link
+            to="/accessibility"
+            className="w-full bg-white rounded-full py-4 px-6 flex items-center gap-4 shadow hover:bg-gray-50 transition text-black"
+          >
             <Accessibility className="w-6 h-6" />
             <span className="font-semibold text-lg">Accessibility</span>
-          </button>
+          </Link>
 
           {/* Verify Account */}
-          <button className="w-full bg-white rounded-full py-4 px-6 flex items-center gap-4 shadow hover:bg-gray-50 transition">
+          <Link
+            to="/verified"
+            className="w-full bg-white rounded-full py-4 px-6 flex items-center gap-4 shadow hover:bg-gray-50 transition text-black"
+          >
             <UserCheck className="w-6 h-6" />
             <span className="font-semibold text-lg">Verify Account</span>
-          </button>
-
+          </Link>
           {/* Location Toggle */}
           <button
             onClick={toggleLocation}
@@ -74,17 +84,14 @@ export default function Settings() {
         </div>
       </div>
 
-      {/* Bottom Navigation */}
-      {/* <nav className="w-full fixed bottom-0 bg-white shadow flex justify-around py-3">
+{/*       
+      <nav className="w-full fixed bottom-0 bg-white shadow flex justify-around py-3">
         <Link to="/home-admin">
           <Home className="w-7 h-7 text-gray-400" />
         </Link>
 
         <Link to="/messages" className="relative">
           <MessageSquare className="w-7 h-7 text-gray-400" />
-          <span className="absolute -top-1 -right-2 bg-blue-600 text-white text-xs px-1.5 py-0.5 rounded-full font-bold">
-            4
-          </span>
         </Link>
 
         <Link to="/alerts">
