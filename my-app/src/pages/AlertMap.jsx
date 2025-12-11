@@ -12,7 +12,7 @@ function AlertMap() {
         {/* <img src={map} alt="Location of alert" className="" /> */}
         <Link
           to="/alerts"
-          className="fixed bg-white top-[6rem] right-5 text-black rounded-full p-2 ring-black"
+          className="fixed bg-white top-[6rem] right-5 text-black rounded-full p-2 ring-black hover:bg-blue-200"
         >
           <Minimize2 />
         </Link>
