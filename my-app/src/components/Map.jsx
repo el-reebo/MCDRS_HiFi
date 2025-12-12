@@ -28,7 +28,7 @@ function Map({ triggerTab }) {
                 triggerTab={triggerTab}
               />
               {/*scale, X(px), Y(px)*/}
-              <TransformComponent className="w-full h-full z-0 initialScale-1.4">
+              <TransformComponent className="w-full h-full z-0">
                 <div className="relative w-full h-full">
                   <img
                     src={map}

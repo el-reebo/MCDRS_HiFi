@@ -26,6 +26,10 @@ function Nav_user() {
                 : "text-gray-400"
             }`}
           />
+
+          <span className="absolute top-2 left-[39%] bg-red-600 text-white text-xs px-1.5 py-0.5 rounded-full font-bold">
+            1
+          </span>
         </Link>
         <Link to="/network">
           <UsersRound

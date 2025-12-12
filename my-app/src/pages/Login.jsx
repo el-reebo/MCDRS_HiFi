@@ -114,12 +114,22 @@ function Login({ onLogin, isAdmin, isLoggedIn, setUsername }) {
             )}
 
             {!isLogin && (
-              <input
-                title="ID"
-                type="file"
-                placeholder="Upload ID"
-                accept="image/png, image/jpeg"
-              />
+              <div>
+                <span className="font-semibold ">
+                  Verify Account (optional):
+                </span>
+                <p className="text-sm text-gray-500">
+                  This ensures alerts are received by real users and helps in
+                  getting in contact
+                </p>
+                <input
+                  title="ID"
+                  type="file"
+                  placeholder="Upload ID"
+                  accept="image/png, image/jpeg"
+                  className="mt-3 mx-auto"
+                />
+              </div>
             )}
 
             <button
@@ -148,7 +158,7 @@ function Login({ onLogin, isAdmin, isLoggedIn, setUsername }) {
             {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
             <button
               type="button"
-              className="text-blue-600 underline"
+              className="text-blue-600 underline, bg-transparent focus: border-gray-200"
               onClick={() => {
                 setIsLogin(!isLogin);
                 setMessage("");
